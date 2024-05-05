@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: back-deploy
+  labels:
+    app: back
+spec:
+  replicas: 1
+  matchLables:
+    labels:
+      app: back
+  template:
+    matadata:
+      labels:
+        app: back
+    container:
+      name: back-deploy
+      image:
+      env:
+        - name: MONGO_USER
+          valueFrom: 
+            secretKeyRef: 
+              name: secret
+              key: username
+        - name: MONGO_PASS
+          valueFrom:
+            secretKeyRef:
+              name: secret
+              key: password      
+      ports:
+        containerPort: 3500
+            

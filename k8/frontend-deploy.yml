@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind:  Deployment
+metadata: 
+  name: front-deploy
+  labels:
+    app: front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata: 
+      labels:
+        app: front
+    container:
+      name: front-d
+      image:
+      env:
+        name: BACKEND_URL
+        value:  
+      ports:
+        - containerPorts: 3000  
