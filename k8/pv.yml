@@ -3,4 +3,11 @@ kind: PersistentVolume
 metadata: 
   name: pv
 spec:
+  capacity: 
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/db
   
